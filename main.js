@@ -9,8 +9,8 @@ require('dotenv').config();
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-let windowHeight=1000,windowWidth=1000;
-let minWindowHeight=200,minWindowWidth=400;
+let windowHeight = 1000, windowWidth = 1000;
+let minWindowHeight = 200, minWindowWidth = 400;
 
 
 function createWindow() {
@@ -18,20 +18,20 @@ function createWindow() {
     win = new BrowserWindow({
         width: windowWidth,
         height: windowHeight,
-        minHeight:minWindowHeight,
+        minHeight: minWindowHeight,
         minWidth: minWindowWidth,
         center: true,
         fullscreen: false,
         title: "Welcome to electron  (F11 to reset)",
         closable: true,
-        frame:process.env.FRAME==='false'?false:true,
-        show:false //do not show the windows until the browser has loaded
+        frame: process.env.FRAME === 'false' ? false : true,
+        show: false //do not show the windows until the browser has loaded
     });
 
-   //only show this window when the browser has loaded the code
-   win.on("ready-to-show",()=>{
-       win.show();
-   });
+    //only show this window when the browser has loaded the code
+    win.on("ready-to-show", () => {
+        win.show();
+    });
 
     // and load the index.html
     win.loadURL(url.format({
