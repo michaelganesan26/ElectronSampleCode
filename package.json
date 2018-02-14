@@ -2,7 +2,7 @@
   "name": "sample-electron",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "main.js",
+  "main": "mainMultipleWindows.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
