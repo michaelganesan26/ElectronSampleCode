@@ -10,13 +10,21 @@ export class AppComponent {
   title = 'app';
   
 
-  constructor(private electronService:ElectronService){}
+  constructor(private electronService:ElectronService){
+
+      this.electronService = electronService;
+
+      this.electronService.ipcRenderer.on('asynchronousReply',(event,arg)=>{
+
+          console.log(`This is your reply: ${arg}`);
+      });
+
+  }
 
   //launch the window to test the electron service
   launchWindow(){
       let currentUrl = 'https://www.cnet.com';
       this.electronService.shell.openExternal(currentUrl);
-
   }
 
 
@@ -26,6 +34,11 @@ export class AppComponent {
 
   }
 
+  //send a message to the main process
+  sendMessageToMainProcess():void{
 
+    this.electronService.ipcRenderer.send("asynchronousSend",'pingMessage');
+
+  }
 
 }
