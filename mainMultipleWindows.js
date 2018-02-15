@@ -1,5 +1,5 @@
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -14,6 +14,11 @@ let minWindowHeight = 200, minWindowWidth = 400;
 
 let applicationWindows = {};
 
+
+//Main process
+ipcMain.on("asynchronousSend",(event,args)=>{
+     console.log(`This is your response for the renderer: ${args}`);
+});
 
 
 
@@ -32,16 +37,16 @@ function createWindow() {
         show: false //do not show the windows until the browser has loaded
     });
 
-    applicationWindows.settings = new BrowserWindow({width:800,height:800,parent:applicationWindows.main,show:false});
+    applicationWindows.settings = new BrowserWindow({ width: 800, height: 800, parent: applicationWindows.main, show: false });
 
 
     //only show this window when the browser has loaded the code
     applicationWindows.main.on("ready-to-show", () => {
         applicationWindows.main.show();
-        setTimeout(()=>{
+        setTimeout(() => {
             applicationWindows.settings.show();
-        },500);
-       
+        }, 500);
+
         console.log("launched the multiplewindows code!!");
     });
 
