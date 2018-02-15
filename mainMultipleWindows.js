@@ -32,9 +32,16 @@ function createWindow() {
         show: false //do not show the windows until the browser has loaded
     });
 
+    applicationWindows.settings = new BrowserWindow({width:800,height:800,parent:applicationWindows.main,show:false});
+
+
     //only show this window when the browser has loaded the code
     applicationWindows.main.on("ready-to-show", () => {
         applicationWindows.main.show();
+        setTimeout(()=>{
+            applicationWindows.settings.show();
+        },500);
+       
         console.log("launched the multiplewindows code!!");
     });
 
