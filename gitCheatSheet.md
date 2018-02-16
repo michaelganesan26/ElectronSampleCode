@@ -83,3 +83,8 @@ http://git-annex.branchable.com/walkthrough/ #see ssh section
 `git annex drop mybigfile`  remove content from local repo  
 `git annex get mybigfile`   retrieve the content  
 `git annex copy --from myremote mybigfile`specify the remote from which to get the file  
+
+### update the current branch with the code on the master
+`git pull --rebase origin master` this will pull the latest code from the master
+`git config -l` this will list the current configuration for the repository
+`git config remote.origin.url https://michaelganesan26:jesus2664@github.com/michaelganesan26/ElectronSampleCode` this is how you set up automatic login to update the repository
