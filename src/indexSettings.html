@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This is a sample code</title>
+</head>
+
+
+<body>
+    <h3>This is a setting for the sample code</h3>
+    <p id='sampleText'></p>
+
+
+    <script>
+        var electron = require('electron');
+        var element = document.getElementById('sampleText');
+
+
+
+        electron.ipcRenderer.on('data', function (event, data) {
+            console.log('Received Data: ', data);
+            element.innerHTML = data;
+        });
+    </script>
+</body>
+
+</html>

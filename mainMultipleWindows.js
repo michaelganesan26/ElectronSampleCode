@@ -28,6 +28,14 @@ let applicationWindows = {};
 //Main process
 ipcMain.on("asynchronousSend",(event,args)=>{
      console.log(`This is your response for the renderer: ${args}`);
+     
+     //send message
+     applicationWindows.settings.webContents.send("data","Michael this is cool! from main window");
+     applicationWindows.settings.show();
+
+
+
+
 });
 
 
@@ -47,17 +55,30 @@ function createWindow() {
         show: false //do not show the windows until the browser has loaded
     });
 
-    applicationWindows.settings = new BrowserWindow({ width: 800, height: 800, parent: applicationWindows.main, show: false });
+    applicationWindows.settings = new BrowserWindow(
+        { width: 800, height: 800, 
+            parent: applicationWindows.main, show: false });
+
+    //load the html for the settings window
+    applicationWindows.settings.loadURL(url.format({
+        pathname: path.join(__dirname,'src', 'indexSettings.html'),
+        protocol: 'file:',
+        slashes: true
+    }))
+
+    applicationWindows.settings.webContents.openDevTools();
 
 
     //only show this window when the browser has loaded the code
     applicationWindows.main.on("ready-to-show", () => {
         applicationWindows.main.show();
-        setTimeout(() => {
-            applicationWindows.settings.show();
-        }, 500);
+        // setTimeout(() => {
+        //     applicationWindows.settings.show();
+        // }, 500);
 
         console.log("launched the multiplewindows code!!");
+   
+
     });
 
     // and load the index.html
