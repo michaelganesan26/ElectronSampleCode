@@ -1,3 +1,13 @@
+/*
+  This is a sample application to open multiple windows in Electron
+  Created by: Michael Ganesan
+  Date: 02/16/2018
+
+  Note: Open multiple windows and create a communication channel
+
+*/
+
+
 
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
