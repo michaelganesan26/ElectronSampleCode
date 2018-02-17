@@ -87,4 +87,9 @@ http://git-annex.branchable.com/walkthrough/ #see ssh section
 ### update the current branch with the code on the master
 `git pull --rebase origin master` this will pull the latest code from the master
 `git config -l` this will list the current configuration for the repository
-`git config remote.origin.url https://michaelganesan26:jesus2664@github.com/michaelganesan26/ElectronSampleCode` this is how you set up automatic login to update the repository
+
+#this is how you set up remote 
+`git config remote.origin.url https://{userid}:{password}@github.com/michaelganesan26/ElectronSampleCode` 
+this is how you set up automatic login to update the repository
+
+
